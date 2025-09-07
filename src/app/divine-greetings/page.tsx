@@ -2,8 +2,14 @@
 
 'use client';
 
-import React, { useState } from 'react';
+import Image from 'next/image';
 import { Sun, Moon, Heart, Sparkles, Download, Share2, Loader2, Star } from 'lucide-react';
+import React, { useState } from 'react';
+
+type Result = {
+  type: string;
+  content: string;
+};
 
 export default function DivineGreetingsPage() {
   const [formData, setFormData] = useState({
@@ -23,8 +29,8 @@ export default function DivineGreetingsPage() {
   ];
 
   const religionOptions = [
-    { id: 'hindu', label: 'Hindu', emoji: '🕉️', color: 'from-orange-400 to-red-500' },
-    { id: 'muslim', label: 'Muslim', emoji: '☪️', color: 'from-green-400 to-emerald-500' },
+    { id: 'hindu', label: 'Sanatan Dharma', emoji: '🕉️', color: 'from-orange-400 to-red-500' },
+    { id: 'muslim', label: 'Islam', emoji: '☪️', color: 'from-green-400 to-emerald-500' },
     { id: 'christian', label: 'Christian', emoji: '✝️', color: 'from-blue-400 to-purple-500' },
     { id: 'sikh', label: 'Sikh', emoji: '☬', color: 'from-yellow-400 to-orange-500' }
   ];
@@ -131,7 +137,7 @@ TEXT ELEMENTS:
 - "${timeOfDayText}" as main heading in beautiful calligraphy
 - A ${quoteTypeInfo?.label.toLowerCase()} quote/blessing related to ${deityInfo?.label}
 - Appropriate religious greeting (e.g., "Om Namah Shivaya", "Assalamu alaykum", "God Bless", "Waheguru")
-
+${customPart}
 
 STYLE:
 - Traditional ${religionInfo?.label} aesthetic meets modern design
@@ -189,8 +195,8 @@ Make it absolutely stunning, respectful, and shareable!`;
       console.log('API Response:', data); // Debug log
       
       if (data.success) {
-        const imageResult = data.results.find((r: any) => r.type === 'image');
-        const textResult = data.results.find((r: any) => r.type === 'text');
+        const imageResult = data.results.find((r: Result) => r.type === 'image');
+        const textResult = data.results.find((r: Result) => r.type === 'text');
         
         if (imageResult) {
           setGeneratedImage(imageResult.content);
@@ -239,10 +245,10 @@ Make it absolutely stunning, respectful, and shareable!`;
           <Sparkles className="text-4xl text-pink-500 ml-2" />
         </div>
         <p className="text-xl md:text-2xl text-gray-700 mb-2">
-          Making Indian Parents' Life Easy, One Blessing at a Time! 🙏
+          Making Indian Parents&apos; Life Easy, One Blessing at a Time! 🙏
         </p>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          Say goodbye to the monotonous flood of the same boring 'Good Morning' images. We generate fresh, beautiful, and unique greetings for a brighter start to every day
+          Say goodbye to the monotonous flood of the same boring &apos;Good Morning&apos; images. We generate fresh, beautiful, and unique greetings for a brighter start to every day
         </p>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
           Create beautiful WhatsApp morning & night images with divine blessings from all faiths. 
@@ -414,9 +420,11 @@ Make it absolutely stunning, respectful, and shareable!`;
                 </h3>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="text-center">
-                    <img 
+                    <Image 
                       src={generatedImage} 
                       alt="Generated blessing" 
+                      width={512}
+                      height={512}
                       className="w-full max-w-md mx-auto rounded-2xl shadow-lg"
                     />
                     <div className="flex justify-center gap-4 mt-4">
