@@ -121,31 +121,10 @@ export async function POST(request: NextRequest) {
         } else if (part.inlineData) {
           const imageData = part.inlineData.data;
           if (typeof imageData === "string") {
-            try {
-              // Save generated image
-              const outputPath = path.join(process.cwd(), 'public', 'generated', `generated-${Date.now()}.png`);
-              
-              const outputDir = path.dirname(outputPath);
-              if (!fs.existsSync(outputDir)) {
-                fs.mkdirSync(outputDir, { recursive: true });
-              }
-              
-              const buffer = Buffer.from(imageData, "base64");
-              fs.writeFileSync(outputPath, buffer);
-              
-              const publicPath = `/generated/${path.basename(outputPath)}`;
-              
-              results.push({
-                type: 'image',
-                content: publicPath,
-                base64: imageData
-              });
-            } catch (error) {
-              console.error('Error saving generated image:', error);
-              return NextResponse.json({
-                error: 'Failed to save generated image'
-              }, { status: 500 });
-            }
+            results.push({
+              type: 'image',
+              base64: imageData
+            });
           }
         }
       }

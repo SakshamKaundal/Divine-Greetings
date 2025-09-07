@@ -9,6 +9,7 @@ import React, { useState } from 'react';
 type Result = {
   type: string;
   content: string;
+  base64?: string;
 };
 
 export default function DivineGreetingsPage() {
@@ -198,8 +199,8 @@ Make it absolutely stunning, respectful, and shareable!`;
         const imageResult = data.results.find((r: Result) => r.type === 'image');
         const textResult = data.results.find((r: Result) => r.type === 'text');
         
-        if (imageResult) {
-          setGeneratedImage(imageResult.content);
+        if (imageResult && imageResult.base64) {
+          setGeneratedImage(imageResult.base64);
         }
         if (textResult) {
           setGeneratedText(textResult.content);
@@ -225,7 +226,7 @@ Make it absolutely stunning, respectful, and shareable!`;
   const handleDownload = () => {
     if (generatedImage) {
       const link = document.createElement('a');
-      link.href = generatedImage;
+      link.href = `data:image/png;base64,${generatedImage}`;
       link.download = `${formData.timeOfDay}-blessing-${Date.now()}.png`;
       link.click();
     }
@@ -421,7 +422,7 @@ Make it absolutely stunning, respectful, and shareable!`;
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="text-center">
                     <Image 
-                      src={generatedImage} 
+                      src={`data:image/png;base64,${generatedImage}`} 
                       alt="Generated blessing" 
                       width={512}
                       height={512}
@@ -436,7 +437,7 @@ Make it absolutely stunning, respectful, and shareable!`;
                         Download
                       </button>
                       <button
-                        onClick={() => navigator.share && navigator.share({url: generatedImage})}
+                        onClick={() => navigator.share && navigator.share({url: `data:image/png;base64,${generatedImage}`})}
                         className="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition-colors flex items-center"
                       >
                         <Share2 className="w-4 h-4 mr-2" />
