@@ -100,7 +100,7 @@ export default function DivineGreetingsPage() {
       case 'muslim':
         religiousContext = 'elegant Islamic art style with geometric patterns';
         colorScheme = 'emerald green, gold, deep blue, and white';
-        symbols = 'geometric Islamic patterns, crescents, stars';
+        symbols = 'geometric Islamic patterns, crescents, stars dont write anything in arabic';
         break;
       case 'christian':
         religiousContext = 'serene Christian art style with crosses, doves, light rays';
