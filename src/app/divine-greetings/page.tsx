@@ -98,9 +98,9 @@ export default function DivineGreetingsPage() {
         symbols = 'om symbols, lotus flowers, diyas (oil lamps), geometric mandalas';
         break;
       case 'muslim':
-        religiousContext = 'elegant Islamic art style with geometric patterns, calligraphy';
+        religiousContext = 'elegant Islamic art style with geometric patterns';
         colorScheme = 'emerald green, gold, deep blue, and white';
-        symbols = 'geometric Islamic patterns, crescents, stars, beautiful Arabic calligraphy';
+        symbols = 'geometric Islamic patterns, crescents, stars';
         break;
       case 'christian':
         religiousContext = 'serene Christian art style with crosses, doves, light rays';
