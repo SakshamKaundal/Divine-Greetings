@@ -246,11 +246,13 @@ Make it absolutely stunning, respectful, and shareable!`;
           <Sparkles className="text-4xl text-pink-500 ml-2" />
         </div>
         <p className="text-xl md:text-2xl text-gray-700 mb-2">
-          Making Indian Parents&apos; Life Easy, One Blessing at a Time! 🙏
+          Making Indian Parent&apos;s Life Easy, One Blessing at a Time! 🙏
         </p>
+        <br />
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
           Say goodbye to the monotonous flood of the same boring &apos;Good Morning&apos; images. We generate fresh, beautiful, and unique greetings for a brighter start to every day
         </p>
+        <br />
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
           Create beautiful WhatsApp morning & night images with divine blessings from all faiths. 
           Perfect for sharing with family and friends! ✨
